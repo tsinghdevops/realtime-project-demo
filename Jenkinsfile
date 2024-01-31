@@ -14,7 +14,9 @@ pipeline{
         }
 
         stage('Verify target') {
-            bat 'dir'
+            steps {
+                bat 'dir
+            }
         }
     }
 }
