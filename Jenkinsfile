@@ -8,8 +8,8 @@ pipeline{
             //agent { docker 'maven:3-alpine' } 
             steps {
                 echo 'Hello, Maven'
-                sh 'mvn --version'
-                sh 'mvn clean package'
+                bat 'mvn --version'
+                bat 'mvn clean package'
             }
         }
     }
