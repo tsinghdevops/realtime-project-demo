@@ -12,5 +12,9 @@ pipeline{
                 bat 'mvn clean package'
             }
         }
+
+        stage('Verify target') {
+            bat 'dir'
+        }
     }
 }
