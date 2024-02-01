@@ -12,15 +12,12 @@ pipeline{
                 bat 'mvn clean package'
             }
         }
-
+        
         stage('SonarQube analysis') {
-            def scannerHome = tool 'SonarScanner 4.0';
-            steps{
-                withSonarQubeEnv('sonar_local') { // If you have configured more than one global server connection, you can specify its name
-                    sh "${scannerHome}/bin/sonar-scanner"
-                }
+             withSonarQubeEnv(credentialsId: 'e26d6a80-958f-47af-bb51-ff7e574886cc', installationName: 'sonar_local') { // You can override the credential to be used
+                sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.10.0.2594:sonar'
             }
-            }
+        }
 
         stage('Verify target') {
             steps {
