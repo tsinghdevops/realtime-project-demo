@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: realtime-project-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: realtime-project-demo
+  template:
+    metadata:
+      labels:
+        app: realtime-project-demo
+    spec:
+      containers:
+        - name: realtime-project-demo
+          image: rtd:v3
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8888
